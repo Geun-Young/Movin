@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream-paper: #f4efea;
+  --color-frost-white: #ffffff;
+  --color-chalk-gray: #f8f8f7;
+  --color-ice-wash: #ebf9ff;
+  --color-notebook-pale: #f9fbe7;
+  --color-charcoal-ink: #383838;
+  --color-pencil-gray: #a1a1a1;
+  --color-graphite: #818181;
+  --color-soft-silver: #c0c0c0;
+  --color-sky-crayon: #6fc2ff;
+  --color-canary-banner: #ffde00;
+  --color-duck-bill-orange: #ff9538;
+  --color-coral-sketch: #f38e84;
+  --color-peach-sketch: #f5b161;
+  --color-mint-sketch: #38c1b0;
+  --color-lilac-sketch: #b291de;
+  --color-lime-sketch: #b3c419;
+  --color-periwinkle-sketch: #7597ee;
+  --color-slate-sketch: #84a6bc;
+  --color-marigold-sketch: #e1c427;
+  --color-wet-cement: #54b4de;
+  --color-peach-blush: #fdedda;
+
+  --font-mono-brand: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --radius-sm: 2px;
+  --shadow-subtle: rgb(56, 56, 56) -6px 6px 0px 0px;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTOlOV.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+  letter-spacing: 0.02em;
+}
+
+body {
+  background: var(--color-cream-paper);
+  color: var(--color-charcoal-ink);
+  font-family: var(--font-mono-brand);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 하드 오프셋 그림자 — 이 시스템의 유일한 elevation */
+.shadow-hard {
+  box-shadow: rgb(56, 56, 56) -6px 6px 0px 0px;
+}
+
+/* 버튼: 눌리면 그림자 속으로 들어간다 */
+.btn-press {
+  transition: transform 90ms ease-out, box-shadow 90ms ease-out;
+}
+.btn-press:hover {
+  transform: translate(-6px, 6px);
+  box-shadow: rgb(56, 56, 56) 0px 0px 0px 0px;
+}
+.btn-press:active {
+  transform: translate(0, 0);
+  box-shadow: rgb(56, 56, 56) -6px 6px 0px 0px;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .btn-press:hover { transform: none; }
+}

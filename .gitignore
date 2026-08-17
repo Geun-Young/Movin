@@ -18,3 +18,7 @@ Thumbs.db
 
 # scratch
 scripts/output/
+
+# next
+next-env.d.ts
+.vercel
