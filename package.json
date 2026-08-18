@@ -10,7 +10,8 @@
     "verify": "node scripts/verify-sources.js",
     "check:db": "node scripts/check-supabase.js",
     "migrate": "node scripts/migrate.js",
-    "batch": "node scripts/run-batch.js"
+    "batch": "node scripts/run-batch.js",
+    "check:mobile": "node scripts/check-mobile.js"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
+    "playwright": "^1.62.1",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3"
   }

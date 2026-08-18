@@ -62,19 +62,20 @@ export default async function Home({ searchParams }) {
       <Nav />
 
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pt-20 pb-16">
+      <section className="relative overflow-hidden px-4 pt-12 pb-12 md:px-6 md:pt-20 md:pb-16">
         <CloudMark className="absolute left-[6%] top-[12%] hidden lg:block" />
         <CloudMark className="absolute right-[8%] top-[24%] hidden lg:block" size={64} />
 
         <div className="mx-auto max-w-[1200px] text-center">
-          <h1 className="mx-auto max-w-[900px] text-[40px] font-light uppercase leading-[1.1] md:text-[56px]">
+          <h1 className="mx-auto max-w-[900px] break-keep text-[30px] leading-[1.15] md:text-[56px] md:leading-[1.1]">
             출퇴근 10분,<br />업계가 읽힌다
           </h1>
-          <p className="mx-auto mt-6 max-w-[600px] text-[16px] md:text-[18px]">
+          <p className="mx-auto mt-5 max-w-[600px] break-keep text-[15px] md:mt-6 md:text-[18px]">
             매일 아침 AI가 업계 뉴스를 3줄로 정리합니다.
             한 손으로 넘겨보는 카드 브리핑.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          {/* 모바일에선 버튼을 세로로 쌓아 터치 실수를 줄인다 */}
+          <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center sm:gap-4">
             <PrimaryButton>무료로 시작하기</PrimaryButton>
             <OutlineButton>샘플 브리핑 보기</OutlineButton>
           </div>
@@ -84,11 +85,11 @@ export default async function Home({ searchParams }) {
       <Marquee />
 
       {/* 브리핑 */}
-      <section className="px-6 py-20">
+      <section className="px-4 py-12 md:px-6 md:py-20">
         <div className="mx-auto max-w-[1200px]">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-6">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-5 md:mb-8 md:gap-6">
             <div>
-              <h2 className="text-[24px] font-medium md:text-[32px]">오늘의 브리핑</h2>
+              <h2 className="text-[22px] md:text-[32px]">오늘의 브리핑</h2>
               <p className="mt-2 text-[14px]" style={{ color: 'var(--color-graphite)' }}>
                 이 리포트를 읽는 데 약 {data.readSeconds}초 걸립니다
               </p>
@@ -109,7 +110,7 @@ export default async function Home({ searchParams }) {
             </div>
           )}
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {data.items.map((item, i) => (
               <BriefingCard key={item.id ?? i} item={item} index={i} />
             ))}
@@ -118,34 +119,36 @@ export default async function Home({ searchParams }) {
       </section>
 
       {/* 라이벌 왓치 + 영단어 */}
-      <section className="px-6 pb-24">
-        <div className="mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <section className="px-4 pb-16 md:px-6 md:pb-24">
+        <div className="mx-auto grid max-w-[1200px] gap-8 md:gap-10 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <h2 className="mb-2 text-[24px] font-medium">라이벌 왓치</h2>
-            <p className="mb-6 text-[14px]" style={{ color: 'var(--color-graphite)' }}>
+            <h2 className="mb-2 text-[22px] md:text-[24px]">라이벌 왓치</h2>
+            <p className="mb-5 break-keep text-[13px] md:mb-6 md:text-[14px]"
+               style={{ color: 'var(--color-graphite)' }}>
               경쟁사 공시를 AI가 요약합니다 · 출처 DART
             </p>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {data.disclosures.map((d, i) => <DisclosureCard key={d.id ?? i} d={d} />)}
             </div>
           </div>
 
-          <div className="relative">
+          {/* 하드 오프셋 그림자(-6px)가 좌측으로 넘치므로 여백을 확보한다 */}
+          <div className="relative pl-[6px]">
             {data.vocab && <VocabCard v={data.vocab} />}
-            <div className="mt-8 flex items-end justify-end gap-3">
+            <div className="mt-6 flex items-end justify-end gap-3 md:mt-8">
               <DuckMark size={64} />
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="border-t px-6 py-12" style={{ borderColor: INK }}>
+      <footer className="border-t px-4 py-10 md:px-6 md:py-12" style={{ borderColor: INK }}>
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <DuckMark size={22} />
-            <span className="text-[14px] font-semibold">MOVIN</span>
+            <span className="font-brand-semi text-[14px]">MOVIN</span>
           </div>
-          <p className="text-[12px]" style={{ color: 'var(--color-pencil-gray)' }}>
+          <p className="break-keep text-[12px]" style={{ color: 'var(--color-pencil-gray)' }}>
             기사 저작권은 각 언론사에 있습니다 · 요약본은 원문 링크와 함께 제공됩니다
           </p>
         </div>

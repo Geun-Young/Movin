@@ -9,19 +9,19 @@ export function Nav() {
       className="w-full bg-[var(--color-frost-white)] border-b"
       style={{ borderColor: INK }}
     >
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-3">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-3 md:px-6">
         <div className="flex items-center gap-2">
           <DuckMark />
-          <span className="text-[16px] font-semibold">MOVIN</span>
+          <span className="font-brand-semi text-[16px]">MOVIN</span>
         </div>
-        <div className="hidden items-center gap-6 text-[12px] font-medium md:flex">
+        <div className="hidden items-center gap-6 text-[12px] md:flex">
           <span>브리핑</span>
           <span>라이벌 왓치</span>
           <span>영단어</span>
           <span>가격</span>
         </div>
         <button
-          className="rounded-[2px] border px-4 py-2 text-[12px] font-semibold text-white"
+          className="min-h-[44px] shrink-0 rounded-[2px] border px-4 text-[12px] text-white"
           style={{ background: 'var(--color-sky-crayon)', borderColor: INK, borderWidth: 1.5 }}
         >
           START FREE
@@ -40,7 +40,7 @@ export function Marquee({ text = 'DATA + AI · 출퇴근 1분 브리핑' }) {
       className="w-full overflow-hidden py-3"
       style={{ background: 'var(--color-canary-banner)' }}
     >
-      <div className="marquee-track flex w-max text-[18px] font-semibold uppercase">
+      <div className="marquee-track flex w-max text-[15px] uppercase md:text-[18px]">
         {items}{items}
       </div>
     </div>
@@ -50,7 +50,7 @@ export function Marquee({ text = 'DATA + AI · 출퇴근 1분 브리핑' }) {
 export function PrimaryButton({ children }) {
   return (
     <button
-      className="btn-press shadow-hard rounded-[2px] border-2 px-6 py-[10px] text-[14px] font-medium"
+      className="btn-press shadow-hard min-h-[44px] rounded-[2px] border-2 px-6 text-[14px]"
       style={{ background: 'var(--color-sky-crayon)', borderColor: INK, color: INK }}
     >
       {children}
@@ -61,7 +61,7 @@ export function PrimaryButton({ children }) {
 export function OutlineButton({ children }) {
   return (
     <button
-      className="btn-press shadow-hard rounded-[2px] border-2 bg-white px-6 py-[10px] text-[14px] font-medium"
+      className="btn-press shadow-hard min-h-[44px] rounded-[2px] border-2 bg-white px-6 text-[14px]"
       style={{ borderColor: INK, color: INK }}
     >
       {children}
@@ -83,7 +83,7 @@ export function DomainTab({ label, active, index, href }) {
   return (
     <a
       href={href}
-      className="btn-press shadow-hard inline-block rounded-[2px] border-2 px-5 py-[10px] text-[14px] font-medium no-underline"
+      className="btn-press shadow-hard inline-flex min-h-[44px] items-center rounded-[2px] border-2 px-5 text-[14px] no-underline"
       style={{
         background: active ? 'var(--color-ice-wash)' : 'var(--color-frost-white)',
         borderColor: active ? INK : RAINBOW[index % RAINBOW.length],
@@ -99,7 +99,7 @@ export function DomainTab({ label, active, index, href }) {
 export function BriefingCard({ item, index }) {
   return (
     <article
-      className="rounded-[2px] border-2 bg-white p-8"
+      className="rounded-[2px] border-2 bg-white p-5 md:p-8"
       style={{ borderColor: INK }}
     >
       <div className="mb-4 flex items-start justify-between gap-4">
@@ -109,17 +109,17 @@ export function BriefingCard({ item, index }) {
         >
           {String(index + 1).padStart(2, '0')}
         </span>
-        <span className="text-[11px]" style={{ color: 'var(--color-pencil-gray)' }}>
+        <span className="text-right text-[11px]" style={{ color: 'var(--color-pencil-gray)' }}>
           {item.source_name}
         </span>
       </div>
 
-      <h3 className="mb-4 text-[18px] font-medium leading-[1.4]">{item.title}</h3>
+      <h3 className="mb-4 break-keep text-[17px] leading-[1.4] md:text-[18px]">{item.title}</h3>
 
       <ul className="mb-5 space-y-2">
         {(item.summary_lines || []).map((line, i) => (
-          <li key={i} className="flex gap-2 text-[14px] leading-[1.6]">
-            <span style={{ color: 'var(--color-sky-crayon)' }}>—</span>
+          <li key={i} className="flex gap-2 break-keep text-[14px] leading-[1.6]">
+            <span className="shrink-0" style={{ color: 'var(--color-sky-crayon)' }}>—</span>
             <span>{line}</span>
           </li>
         ))}
@@ -137,11 +137,12 @@ export function BriefingCard({ item, index }) {
         ))}
       </div>
 
+      {/* 터치 대상 최소 44px 확보 (-my-2 로 시각적 여백은 유지) */}
       <a
         href={item.source_url}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-[12px] font-medium underline"
+        className="-my-2 inline-flex min-h-[44px] items-center text-[13px] underline"
         style={{ color: INK }}
       >
         원문 보기 ↗
@@ -152,20 +153,21 @@ export function BriefingCard({ item, index }) {
 
 export function DisclosureCard({ d }) {
   return (
-    <div className="rounded-[2px] border-2 bg-white p-6" style={{ borderColor: INK }}>
-      <div className="mb-2 flex items-center gap-2">
+    <div className="rounded-[2px] border-2 bg-white p-5 md:p-6" style={{ borderColor: INK }}>
+      <div className="mb-2 flex flex-wrap items-center gap-2">
         <span
-          className="rounded-[2px] border px-2 py-[2px] text-[11px] font-semibold"
+          className="rounded-[2px] border px-2 py-[2px] text-[11px]"
           style={{ background: 'var(--color-duck-bill-orange)', borderColor: INK }}
         >
           공시
         </span>
-        <span className="text-[14px] font-semibold">{d.corp_name}</span>
+        <span className="font-brand-semi text-[14px]">{d.corp_name}</span>
       </div>
-      <p className="mb-3 text-[14px]">{d.summary}</p>
+      <p className="mb-3 break-keep text-[14px]">{d.summary}</p>
       {d.dart_url && (
         <a href={d.dart_url} target="_blank" rel="noopener noreferrer"
-           className="text-[12px] underline" style={{ color: INK }}>
+           className="-my-2 inline-flex min-h-[44px] items-center text-[13px] underline"
+           style={{ color: INK }}>
           DART 원문 ↗
         </a>
       )}
@@ -176,14 +178,16 @@ export function DisclosureCard({ d }) {
 export function VocabCard({ v }) {
   return (
     <div
-      className="shadow-hard rounded-[2px] border-2 p-8"
+      className="shadow-hard rounded-[2px] border-2 p-5 md:p-8"
       style={{ background: 'var(--color-canary-banner)', borderColor: INK }}
     >
-      <div className="mb-1 text-[11px] font-semibold uppercase">오늘의 영단어</div>
-      <div className="font-brand-serif mb-2 text-[32px] leading-[1.2]">{v.word}</div>
-      <div className="mb-4 text-[16px]">{v.meaning_ko}</div>
+      <div className="mb-1 text-[11px] uppercase">오늘의 영단어</div>
+      <div className="font-brand-serif mb-2 break-words text-[28px] leading-[1.2] md:text-[32px]">
+        {v.word}
+      </div>
+      <div className="mb-4 break-keep text-[15px] md:text-[16px]">{v.meaning_ko}</div>
       {v.example_sentence && (
-        <p className="border-t pt-4 text-[14px] italic" style={{ borderColor: INK }}>
+        <p className="border-t pt-4 text-[13px] md:text-[14px]" style={{ borderColor: INK }}>
           “{v.example_sentence}”
         </p>
       )}
