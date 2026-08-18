@@ -22,3 +22,6 @@ scripts/output/
 # next
 next-env.d.ts
 .vercel
+
+# 폰트 원본 zip (public/fonts 에 woff2 만 추출해 사용)
+*.zip

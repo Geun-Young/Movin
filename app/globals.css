@@ -24,32 +24,74 @@
   --color-wet-cement: #54b4de;
   --color-peach-blush: #fdedda;
 
-  --font-mono-brand: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  /* 국민대 성곡해옹체. 한글 서비스라 라틴 모노 대신 브랜드 폰트를 본문에 쓴다.
+     (원 디자인 시스템은 mono 전용이지만, 한글이 폴백으로 떨어지는 문제가 있었다) */
+  --font-brand: 'KMU80 Haeong Sans', system-ui, sans-serif;
+  --font-brand-semi: 'KMU80 Haeong SemiSans', system-ui, sans-serif;
+  --font-brand-serif: 'KMU80 Sungkok Serif', Georgia, serif;
+  --font-brand-semiserif: 'KMU80 Sungkok SemiSerif', Georgia, serif;
 
   --radius-sm: 2px;
   --shadow-subtle: rgb(56, 56, 56) -6px 6px 0px 0px;
 }
 
 @font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 300 700;
+  font-family: 'KMU80 Haeong Sans';
+  src: url('/fonts/KMU80HaeongSans.woff2') format('woff2');
+  font-weight: normal;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTOlOV.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'KMU80 Haeong SemiSans';
+  src: url('/fonts/KMU80HaeongSemiSans.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KMU80 Sungkok SemiSerif';
+  src: url('/fonts/KMU80SungkokSemiSerif.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KMU80 Sungkok Serif';
+  src: url('/fonts/KMU80SungkokSerif.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
 }
 
-* {
-  letter-spacing: 0.02em;
+@layer base {
+  * {
+    letter-spacing: 0.02em;
+  }
+
+  body {
+    background: var(--color-cream-paper);
+    color: var(--color-charcoal-ink);
+    font-family: 'KMU80 Haeong Sans', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 헤드라인은 SemiSans 로 무게를 준다. 이 폰트군은 굵기 축이 없어
+     weight 대신 서체 자체를 바꿔 위계를 만든다. */
+  h1, h2, h3 {
+    font-family: 'KMU80 Haeong SemiSans', system-ui, sans-serif;
+  }
 }
 
-body {
-  background: var(--color-cream-paper);
-  color: var(--color-charcoal-ink);
-  font-family: var(--font-mono-brand);
-  font-size: 14px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+@layer utilities {
+  .font-brand-semi {
+    font-family: 'KMU80 Haeong SemiSans', system-ui, sans-serif;
+  }
+  /* 영단어 카드처럼 '읽는 맛'이 필요한 곳엔 serif */
+  .font-brand-serif {
+    font-family: 'KMU80 Sungkok Serif', Georgia, serif;
+  }
+  .font-brand-semiserif {
+    font-family: 'KMU80 Sungkok SemiSerif', Georgia, serif;
+  }
 }
 
 /* 하드 오프셋 그림자 — 이 시스템의 유일한 elevation */

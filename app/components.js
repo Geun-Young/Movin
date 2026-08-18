@@ -180,7 +180,7 @@ export function VocabCard({ v }) {
       style={{ background: 'var(--color-canary-banner)', borderColor: INK }}
     >
       <div className="mb-1 text-[11px] font-semibold uppercase">오늘의 영단어</div>
-      <div className="mb-2 text-[32px] font-light leading-[1.2]">{v.word}</div>
+      <div className="font-brand-serif mb-2 text-[32px] leading-[1.2]">{v.word}</div>
       <div className="mb-4 text-[16px]">{v.meaning_ko}</div>
       {v.example_sentence && (
         <p className="border-t pt-4 text-[14px] italic" style={{ borderColor: INK }}>
